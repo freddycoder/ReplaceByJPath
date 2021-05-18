@@ -41,3 +41,13 @@ l'operateur de redirection de la sortie standard >
 - Ajouter une liste de JPath en paramètre
 - Ajouter une liste de valeur pour chaque JPath en paramètre
 - Ajouter un menu et de l'aide
+
+# Powershell version
+
+```
+>>> $PSVersionTable.PSVersion
+
+Major  Minor  Build  Revision
+-----  -----  -----  --------
+5      1      19041  906
+```
