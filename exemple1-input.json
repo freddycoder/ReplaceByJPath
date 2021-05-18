@@ -1,0 +1,87 @@
+{
+  "Categories": [
+    {
+      "Name": "abstract_",
+      "Score": 0.00390625,
+      "Detail": null
+    },
+    {
+      "Name": "others_",
+      "Score": 0.00390625,
+      "Detail": null
+    },
+    {
+      "Name": "outdoor_",
+      "Score": 0.00390625,
+      "Detail": {
+        "Celebrities": null,
+        "Landmarks": []
+      }
+    }
+  ],
+  "Adult": {
+    "IsAdultContent": false,
+    "IsRacyContent": false,
+    "IsGoryContent": false,
+    "AdultScore": 0.0036052388604730368,
+    "RacyScore": 0.004965602420270443,
+    "GoreScore": 0.0007372998516075313
+  },
+  "Color": {
+    "DominantColorForeground": "Grey",
+    "DominantColorBackground": "Grey",
+    "DominantColors": [
+      "Grey"
+    ],
+    "AccentColor": "656764",
+    "IsBWImg": true
+  },
+  "ImageType": {
+    "ClipArtType": 0,
+    "LineDrawingType": 0
+  },
+  "Tags": [
+    {
+      "Name": "screenshot",
+      "Confidence": 0.9624522924423218,
+      "Hint": null
+    },
+    {
+      "Name": "black and white",
+      "Confidence": 0.7699096202850342,
+      "Hint": null
+    },
+    {
+      "Name": "indoor",
+      "Confidence": 0.7316235899925232,
+      "Hint": null
+    },
+    {
+      "Name": "wall",
+      "Confidence": 0.7135261297225952,
+      "Hint": null
+    }
+  ],
+  "Description": {
+    "Tags": [
+      "white",
+      "black"
+    ],
+    "Captions": [
+      {
+        "Text": "a room with many barrels",
+        "Confidence": 0.28485190868377686
+      }
+    ]
+  },
+  "Faces": [],
+  "Objects": [],
+  "Brands": [],
+  "RequestId": "dfdbd56d-2d68-46bf-8c39-c54742101241",
+  "Metadata": {
+    "Width": 640,
+    "Height": 480,
+    "Format": "Jpeg"
+  },
+  "ModelVersion": "2021-04-01"
+}
