@@ -4,24 +4,36 @@ Script permetant de modifier les valeurs d'un json à l'intérieur d'un fichier.
 
 # Utilisation
 
-1. Dans le script, a la section suivante, adapteur la logique pour votre scénario de remplacement.
+1. Préparer un json de replacement
+
+Un json de replacement indiquera le chemin des valeurs a remplacer ainsi que les valeurs même.
+
+Les clés seront le path et la valeur, la valeur à remplacer.
 
 ```
-# Modifier certaines valeurs
-foreach ($tag in $json.Tags) {
-    $tag.Confidence = 1.0
-}
+'{"Tags.Confidence":1.0,"RequestId":"0000-0000-0000"}'
 ```
 
 2. Lancer le script
 
+Les arguments dans l'ordre sont :
+1. le chemin du fichier contenant le json
+2. le json de remplacement
+3. le fichier de sortie ou sera sauvegarder le résultat.
+
 ```
-.\replaceByJPathFunction.ps1 .\exemple1-input.json .\exemple1-output.json
+.\replaceByJPathFunction.ps1 .\exemple1-input.json '{"Tags.Confidence":1.0,"RequestId":"0000-0000-0000"}' .\exemple1-output.json
 ```
 
 3. (Optionel) Comparer les résultats
 
 Dans VSCode ou un autre outils, comparer les résultats.
+
+# Obtenir de l'aide
+
+```
+Get-Help -detailed .\replaceByJPathFunction.ps1
+```
 
 # Notes :
 
@@ -38,9 +50,9 @@ l'operateur de redirection de la sortie standard >
 
 # Todo
 
-- Ajouter une liste de JPath en paramètre
-- Ajouter une liste de valeur pour chaque JPath en paramètre
-- Ajouter un menu et de l'aide
+- Rendre la solution plus générique, supporte seulement les tableaus a une dimession
+- Améliorer les validations des paramètres d'entrés
+- Améliorer le menu et d'aide
 
 # Powershell version
 

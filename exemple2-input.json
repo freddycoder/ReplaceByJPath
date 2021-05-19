@@ -1,0 +1,129 @@
+[
+  {
+    "id": 1,
+    "nom": "Érablière A",
+    "ipRule": "192.168.0.151;127.0.0.1",
+    "afficherSectionBaril": true,
+    "capteurs": [
+      {
+        "id": 1,
+        "nom": "DL06 Demo",
+        "idErabliere": 1,
+        "dc": "2021-04-04T15:17:48.485+00:00",
+        "donnees": []
+      }
+    ],
+    "donnees": [
+      {
+        "id": 1388,
+        "d": "2021-05-18T23:36:24.513+00:00",
+        "t": -7,
+        "nb": 0,
+        "v": 243,
+        "nboc": 0
+      },
+      {
+        "id": 1392,
+        "d": "2021-05-18T23:37:07.407+00:00",
+        "t": -7,
+        "nb": 0,
+        "v": 243,
+        "pi": 42,
+        "nboc": 0,
+        "iddp": 1388
+      }
+    ],
+    "barils": [],
+    "dompeux": [
+      {
+        "id": 760,
+        "t": "2021-05-18T23:36:24.705+00:00",
+        "dd": "2021-05-18T23:35:24.705+00:00",
+        "df": "2021-05-18T23:36:24.705+00:00"
+      },
+      {
+        "id": 762,
+        "t": "2021-05-18T23:37:07.572+00:00",
+        "dd": "2021-05-18T23:36:07.572+00:00",
+        "df": "2021-05-18T23:37:07.572+00:00"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nom": "Érablière B",
+    "ipRule": "192.168.0.151",
+    "capteurs": [],
+    "donnees": [],
+    "barils": [],
+    "dompeux": []
+  },
+  {
+    "id": 3,
+    "nom": "Érablière C",
+    "indiceOrdre": 1,
+    "afficherSectionBaril": true,
+    "afficherTrioDonnees": true,
+    "afficherSectionDompeux": true,
+    "capteurs": [
+      {
+        "id": 6,
+        "nom": "Raspberry PI Temperature",
+        "idErabliere": 3,
+        "dc": "2021-04-20T01:20:02.182+00:00",
+        "donnees": []
+      }
+    ],
+    "donnees": [
+      {
+        "id": 1389,
+        "d": "2021-05-18T23:36:25.291+00:00",
+        "t": -7,
+        "nb": 0,
+        "v": 0,
+        "nboc": 0
+      },
+      {
+        "id": 1393,
+        "d": "2021-05-18T23:37:08.051+00:00",
+        "t": -7,
+        "nb": 0,
+        "v": 0,
+        "pi": 42,
+        "nboc": 0,
+        "iddp": 1389
+      }
+    ],
+    "barils": [],
+    "dompeux": [
+      {
+        "id": 761,
+        "t": "2021-05-18T23:36:25.493+00:00",
+        "dd": "2021-05-18T23:35:25.493+00:00",
+        "df": "2021-05-18T23:36:25.493+00:00"
+      },
+      {
+        "id": 763,
+        "t": "2021-05-18T23:37:08.212+00:00",
+        "dd": "2021-05-18T23:36:08.212+00:00",
+        "df": "2021-05-18T23:37:08.212+00:00"
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "nom": "Shoes motivating Berkshire Reduced communities",
+    "capteurs": [],
+    "donnees": [],
+    "barils": [],
+    "dompeux": []
+  },
+  {
+    "id": 434,
+    "nom": "Frozen payment bandwidth Idaho Avon",
+    "capteurs": [],
+    "donnees": [],
+    "barils": [],
+    "dompeux": []
+  }
+]
