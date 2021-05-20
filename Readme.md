@@ -85,9 +85,9 @@ l'operateur de redirection de la sortie standard >
 
 ## Todo
 
-- Rendre la solution plus générique, supporte seulement les tableaus a une dimession
 - Améliorer les validations des paramètres d'entrés
 - Améliorer le menu et d'aide
+- Ajout de test automatisé à partire des exemples dans le repo
 
 ## Powershell version
 
