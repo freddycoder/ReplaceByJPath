@@ -66,13 +66,20 @@ Get-Help -detailed .\replaceByJPathFunction.ps1
 Utiliser la fonction Out-Null de powershell
 
 Exemple :
-````
-.\replaceByJPathFunction.ps1 .\exemples\input.json '{"propriete": 123}' .\exemples\output.json | Out-Null
+```
+.\replaceByJPathFunction.ps1 .\exemples\input1.json '{"Tags.Confidence":1.0,"RequestId":"0000-0000-0000"}' .\exemples\output1.json | Out-Null
+```
+
+## Executer les tests
+
+Pour lancer les tests, se positionner à la racine du repo et executer :
+
+```
+.\tests\replaceByJPathTest.ps1
 ```
 
 ## Todo
 
-- Rendre la solution plus générique, supporte seulement les tableaus a une dimession
 - Améliorer les validations des paramètres d'entrés
 - Améliorer le menu et d'aide
 
