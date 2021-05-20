@@ -24,7 +24,7 @@ Les arguments dans l'ordre sont :
 3. le fichier de sortie ou sera sauvegarder le résultat.
 
 ```
-.\replaceByJPathFunction.ps1 .\exemple1-input.json '{"Tags.Confidence":1.0,"RequestId":"0000-0000-0000"}' .\exemple1-output.json
+.\replaceByJPathFunction.ps1 .\exemples\input1.json '{"Tags.Confidence":1.0,"RequestId":"0000-0000-0000"}' .\exemples\output1.json
 ```
 
 3. (Optionel) Comparer les résultats
@@ -38,7 +38,7 @@ Json avec un tableau à la racine
 1. Préparer et lancer la commande
 
 ```
-.\replaceByJPathFunction.ps1 .\exemple2-input.json '{"donnees.d": "2021"}' .\exemple2-output.json
+.\replaceByJPathFunction.ps1 .\exemples\input2.json '{"donnees.d": "2021"}' .\exemples\output2.json
 ```
 
 2. (optionnel) Comparer les résultat
@@ -50,7 +50,7 @@ Modifier les id d'un tableau a plusieurs dimmesion.
 1. Préparer et lancer la commande
 
 ```
-.\replaceByJPathFunction.ps1 .\exemple3-input.json "{'capteurs.donnees.id': '000-000-000' }" .\exemple3-output.json
+.\replaceByJPathFunction.ps1 .\exemples\input3.json "{'capteurs.donnees.id': '000-000-000' }" .\exemples\output3.json
 ```
 
 2. (optionnel) Comparer les résultat
@@ -67,20 +67,7 @@ Utiliser la fonction Out-Null de powershell
 
 Exemple :
 ````
-.\replaceByJPathFunction.ps1 .\fichier-input.json '{"propriete": 123}' .\fichier-output.json | Out-Null
-```
-
-## Notes :
-
-Ici Write-Output n'a pas été utiliser car un saut de ligne s'ajoutait à la fin
-ce qui créait des différences à la comparaison entre le fichier input et output
-
-Dans le cas ou un saut de ligne serait désiré, le script pourrait être modifier
-Write-Output $outputContent
-et lors de l'appel au script au lieu d'avoir deux argument, on pourrait utiliser
-l'operateur de redirection de la sortie standard >
-```
-.\replaceByJPathFunction.ps1 .\exemple1-input.json > .\exemple1-output.json
+.\replaceByJPathFunction.ps1 .\exemples\input.json '{"propriete": 123}' .\exemples\output.json | Out-Null
 ```
 
 ## Todo
