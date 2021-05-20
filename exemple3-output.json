@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "nom": "Érablière A",
+    "ipRule": "192.168.0.151;127.0.0.1",
+    "afficherSectionBaril": true,
+    "capteurs": [
+      {
+        "id": 1,
+        "nom": "DL06 Demo",
+        "idErabliere": 1,
+        "dc": "2021-04-04T15:17:48.485+00:00",
+        "donnees": [
+          {
+            "id": "000-000-000",
+            "valeur": 129,
+            "d": "2021-04-22T00:16:10.625+00:00"
+          },
+          {
+            "id": "000-000-000",
+            "valeur": 234,
+            "d": "2021-04-22T00:36:33.12+00:00"
+          }
+        ]
+      }
+    ],
+    "donnees": null,
+    "barils": [],
+    "dompeux": null
+  },
+  {
+    "id": 2,
+    "nom": "Érablière B",
+    "ipRule": "192.168.0.151",
+    "capteurs": [],
+    "donnees": null,
+    "barils": [],
+    "dompeux": null
+  },
+  {
+    "id": 3,
+    "nom": "Érablière C",
+    "indiceOrdre": 1,
+    "afficherSectionBaril": true,
+    "afficherTrioDonnees": true,
+    "afficherSectionDompeux": true,
+    "capteurs": [
+      {
+        "id": 6,
+        "nom": "Raspberry PI Temperature",
+        "idErabliere": 3,
+        "dc": "2021-04-20T01:20:02.182+00:00",
+        "donnees": [
+          {
+            "id": "000-000-000",
+            "valeur": 129,
+            "d": "2021-04-22T00:16:10.625+00:00"
+          },
+          {
+            "id": "000-000-000",
+            "valeur": 234,
+            "d": "2021-04-22T00:36:33.12+00:00"
+          }
+        ]
+      }
+    ],
+    "donnees": null,
+    "barils": [],
+    "dompeux": null
+  },
+  {
+    "id": 104,
+    "nom": "Shoes motivating Berkshire Reduced communities",
+    "capteurs": [],
+    "donnees": null,
+    "barils": [],
+    "dompeux": null
+  }
+]

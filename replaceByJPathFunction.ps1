@@ -40,6 +40,15 @@ function Get-Value($jobject) {
         return [System.Decimal]::Parse($a[$a.Length - 1]);
     }
 
+    if ($a -eq "System.Object[]") {
+       [System.Collections.ArrayList]$al = @()
+
+        return $al; # Dans l'état actuel, cela ce transforme en null dans l'objet
+    }
+    if ($type -eq "object" -and $a[$a.Length - 1] -eq "null") {
+       return [System.Object];
+    }
+
     return $a[$a.Length - 1];
 }
 
@@ -59,7 +68,7 @@ foreach ($jpath in $replaceObject | Get-Member -MemberType "NoteProperty")
 
     for ($i = 0; $i -lt $pathElements.Length - 1; $i++) 
     {
-        $ref = $json.($pathElements[$i]);
+        $ref = $ref.($pathElements[$i]);
     }
 
     if ($ref -is [system.array]) {

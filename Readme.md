@@ -2,7 +2,9 @@
 
 Script permetant de modifier les valeurs d'un json à l'intérieur d'un fichier.
 
-# Utilisation
+## Utilisation
+
+### Exemple 1
 
 1. Préparer un json de replacement
 
@@ -29,13 +31,46 @@ Les arguments dans l'ordre sont :
 
 Dans VSCode ou un autre outils, comparer les résultats.
 
-# Obtenir de l'aide
+### Exemple 2
+
+Json avec un tableau à la racine
+
+1. Préparer et lancer la commande
+
+```
+.\replaceByJPathFunction.ps1 .\exemple2-input.json '{"donnees.d": "2021"}' .\exemple2-output.json
+```
+
+2. (optionnel) Comparer les résultat
+
+### Exemple 3
+
+Modifier les id d'un tableau a plusieurs dimmesion.
+
+1. Préparer et lancer la commande
+
+```
+.\replaceByJPathFunction.ps1 .\exemple3-input.json "{'capteurs.donnees.id': '000-000-000' }" .\exemple3-output.json
+```
+
+2. (optionnel) Comparer les résultat
+
+## Obtenir de l'aide
 
 ```
 Get-Help -detailed .\replaceByJPathFunction.ps1
 ```
 
-# Notes :
+## Ne pas journaliser en console
+
+Utiliser la fonction Out-Null de powershell
+
+Exemple :
+````
+.\replaceByJPathFunction.ps1 .\fichier-input.json '{"propriete": 123}' .\fichier-output.json | Out-Null
+```
+
+## Notes :
 
 Ici Write-Output n'a pas été utiliser car un saut de ligne s'ajoutait à la fin
 ce qui créait des différences à la comparaison entre le fichier input et output
@@ -48,13 +83,13 @@ l'operateur de redirection de la sortie standard >
 .\replaceByJPathFunction.ps1 .\exemple1-input.json > .\exemple1-output.json
 ```
 
-# Todo
+## Todo
 
 - Rendre la solution plus générique, supporte seulement les tableaus a une dimession
 - Améliorer les validations des paramètres d'entrés
 - Améliorer le menu et d'aide
 
-# Powershell version
+## Powershell version
 
 ```
 >>> $PSVersionTable.PSVersion
