@@ -66,7 +66,7 @@ Get-Help -detailed .\replaceByJPathFunction.ps1
 Utiliser la fonction Out-Null de powershell
 
 Exemple :
-````
+```
 .\replaceByJPathFunction.ps1 .\fichier-input.json '{"propriete": 123}' .\fichier-output.json | Out-Null
 ```
 
