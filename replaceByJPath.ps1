@@ -1,7 +1,7 @@
 
 <#PSScriptInfo
 
-.VERSION 1.0
+.VERSION 1.1
 
 .GUID 7cdb1a91-ade2-4d26-9942-5005fa790e33
 
@@ -11,11 +11,11 @@
 
 .COPYRIGHT 
 
-.TAGS 
+.TAGS JPath XPath XML JSON Replace
 
 .LICENSEURI 
 
-.PROJECTURI 
+.PROJECTURI https://github.com/freddycoder/ReplaceByJPath
 
 .ICONURI 
 
@@ -25,7 +25,7 @@
 
 .EXTERNALSCRIPTDEPENDENCIES 
 
-.RELEASENOTES First release of the script, minimal feature
+.RELEASENOTES Fix usage of relatie path with the outputFileName parameter
 
 
 #>
@@ -169,6 +169,12 @@ if ($typeFichier -eq "json") {
 
   $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
 
+  $isRooted = [System.IO.Path]::IsPathRooted($outputFileName);
+
+  if ($isRooted -eq $false) {
+    $outputFileName = $PWD.Path + "\" + $outputFileName;
+  }
+
   [System.IO.File]::WriteAllText($outputFileName, $outputContent, $Utf8NoBomEncoding);
 }
 elseif ($typeFichier -eq "xml") {
@@ -203,6 +209,12 @@ elseif ($typeFichier -eq "xml") {
   $xmlString = $xmlDoc.OuterXml;
 
   $xmlOut = [xml]$xmlString.Replace(' notxmlns="', ' xmlns="');
+
+  $isRooted = [System.IO.Path]::IsPathRooted($outputFileName);
+
+  if ($isRooted -eq $false) {
+    $outputFileName = $PWD.Path + "\" + $outputFileName;
+  }
 
   $xmlOut.save($outputFileName);
 }
