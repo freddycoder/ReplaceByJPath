@@ -1,4 +1,4 @@
-# ReplaceByJPathFunction
+# ReplaceByJPath
 
 Script permettant de modifier les valeurs d'un JSON ou d'un XML à l'intérieur d'un fichier.
 
