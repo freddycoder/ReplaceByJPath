@@ -25,7 +25,7 @@
 
 .EXTERNALSCRIPTDEPENDENCIES 
 
-.RELEASENOTES Fix usage of relatie path with the outputFileName parameter
+.RELEASENOTES Fix usage of relative path with the outputFileName parameter
 
 
 #>
