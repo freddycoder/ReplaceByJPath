@@ -2,6 +2,14 @@
 
 Script permettant de modifier les valeurs d'un JSON ou d'un XML à l'intérieur d'un fichier.
 
+## Installer le package depuis Powershell Gallery
+
+Dans une fenêtre powershell avec les droits d'administration, executer : 
+
+```
+Install-Script -Name replaceByJPath 
+```
+
 ## Utilisation
 
 ### Exemple 1
