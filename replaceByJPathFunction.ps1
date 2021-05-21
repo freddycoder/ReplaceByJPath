@@ -4,8 +4,6 @@ param(
   [string] $outputFileName=""
 )
 
-$ns = @{dns="some/kind/of/tree/v1"}
-
 # Section validation des paramètres d'entrés
 
 ## Transformer l'objet de replacement
