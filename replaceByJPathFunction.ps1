@@ -1,3 +1,42 @@
+
+<#PSScriptInfo
+
+.VERSION 1.0
+
+.GUID 7cdb1a91-ade2-4d26-9942-5005fa790e33
+
+.AUTHOR Frédéric Jacques
+
+.COMPANYNAME 
+
+.COPYRIGHT 
+
+.TAGS 
+
+.LICENSEURI 
+
+.PROJECTURI 
+
+.ICONURI 
+
+.EXTERNALMODULEDEPENDENCIES 
+
+.REQUIREDSCRIPTS 
+
+.EXTERNALSCRIPTDEPENDENCIES 
+
+.RELEASENOTES First release of the script, minimal feature
+
+
+#>
+
+<# 
+
+.DESCRIPTION 
+ A script to replace values in json and xml file given a replacement json object 
+
+#> 
+
 param(
   [string] $inputFileName="",
   [string] $replaceJson="",
