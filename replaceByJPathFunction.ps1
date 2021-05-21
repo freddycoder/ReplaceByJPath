@@ -70,8 +70,8 @@ function TypeFichier([string] $text) {
          return "json";
        }
 
-  if (($indiceXml -eq -1 -and $indiceJson -ge 0) -or
-       $indiceXml -gt $indiceJson) {
+  if (($indiceJson -eq -1 -and $indiceXml -ge 0) -or
+       $indiceJson -gt $indiceXml) {
          return "xml";
        }
 
