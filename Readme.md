@@ -1,14 +1,14 @@
 # ReplaceByJPathFunction
 
-Script permetant de modifier les valeurs d'un json à l'intérieur d'un fichier.
+Script permettant de modifier les valeurs d'un JSON ou d'un XML à l'intérieur d'un fichier.
 
 ## Utilisation
 
 ### Exemple 1
 
-1. Préparer un json de replacement
+1. Préparer un JSON de replacement
 
-Un json de replacement indiquera le chemin des valeurs a remplacer ainsi que les valeurs même.
+Un JSON de replacement indiquera le chemin des valeurs à remplacer ainsi que les valeurs même.
 
 Les clés seront le path et la valeur, la valeur à remplacer.
 
@@ -19,9 +19,9 @@ Les clés seront le path et la valeur, la valeur à remplacer.
 2. Lancer le script
 
 Les arguments dans l'ordre sont :
-1. le chemin du fichier contenant le json
-2. le json de remplacement
-3. le fichier de sortie ou sera sauvegarder le résultat.
+1. le chemin du fichier contenant le JSON
+2. le JSON de remplacement
+3. le fichier de sortie ou sera sauvegardé le résultat.
 
 ```
 .\replaceByJPathFunction.ps1 .\exemples\input1.json '{"Tags.Confidence":1.0,"RequestId":"0000-0000-0000"}' .\exemples\output1.json
@@ -29,7 +29,7 @@ Les arguments dans l'ordre sont :
 
 3. (Optionel) Comparer les résultats
 
-Dans VSCode ou un autre outils, comparer les résultats.
+Dans VSCode ou un autre outil, comparer les résultats.
 
 ### Exemple 2
 
@@ -41,11 +41,11 @@ Json avec un tableau à la racine
 .\replaceByJPathFunction.ps1 .\exemples\input2.json '{"donnees.d": "2021"}' .\exemples\output2.json
 ```
 
-2. (optionnel) Comparer les résultat
+2. (optionnel) Comparer les résultats
 
 ### Exemple 3
 
-Modifier les id d'un tableau a plusieurs dimmesion.
+Modifier les id d'un tableau a plusieurs dimensions.
 
 1. Préparer et lancer la commande
 
@@ -53,7 +53,20 @@ Modifier les id d'un tableau a plusieurs dimmesion.
 .\replaceByJPathFunction.ps1 .\exemples\input3.json "{'capteurs.donnees.id': '000-000-000' }" .\exemples\output3.json
 ```
 
-2. (optionnel) Comparer les résultat
+2. (optionnel) Comparer les résultats
+
+### Exemple 4 et 5
+
+Modifier un fichier XML.
+
+L'exemple 4 n'utilise pas les namespaces, alors que l'exemple 5 utilise un namespace par défaut.
+
+1. Préparer et lancer la commande
+```
+.\replaceByJPathFunction.ps1 .\exemples\input4.xml "{'/submission/group/@attr1': 'some other text', '/submission/group/item': 'z'}" .\exemples\output4.xml
+```
+
+2. (optionnel) Comparer les résultats
 
 ## Obtenir de l'aide
 
@@ -72,15 +85,21 @@ Exemple :
 
 ## Executer les tests
 
-Pour lancer les tests, se positionner à la racine du repo et executer :
+Pour lancer les tests, se positionner à la racine du repo et exécuter :
 
 ```
 .\tests\replaceByJPathTest.ps1
 ```
 
+## Ajouter un test
+
+Pour ajouter un test, il faut :
+1. Ajouter le fichier input dans le dossier exemple et le résultat attendu en remplaçant le préfix input par output.
+2. Modifier l'expression switch dans la fonction JsonReplacement du fichier .\tests\replaceByJPath.Test.ps1
+
 ## Todo
 
-- Améliorer les validations des paramètres d'entrés
+- Améliorer les validations des paramètres d'entrées
 - Améliorer le menu et d'aide
 
 ## Powershell version

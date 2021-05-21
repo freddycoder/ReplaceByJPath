@@ -4,6 +4,8 @@ function JsonReplacement([string]$nomCasEssais) {
         "input1.json" { return "{'Tags.Confidence':1.0,'RequestId':'0000-0000-0000'}" }
         "input2.json" { return "{'donnees.d': '2021'}" }
         "input3.json" { return "{'capteurs.donnees.id': '000-000-000' }" }
+        "input4.xml"  { return "{'/submission/group/@attr1': 'some other text', '/submission/group/item': 'z'}"}
+        "input5.xml"  { return "{'/submission/group/@attr1': 'some other text', '/submission/group/item': 'z'}"}
         Default {
             Write-Host "Aucun json de remplacement pour le cas d'essais " $nomCasEssais;
             exit 1;

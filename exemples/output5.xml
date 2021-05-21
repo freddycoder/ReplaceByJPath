@@ -1,0 +1,7 @@
+<submission version="2.0" type="TREE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:noNamespaceSchemaLocation="TREE.xsd" xmlns="some/kind/of/tree/v1">
+  <group attr1="some other text">
+    <item>z</item>
+    <item>z</item>
+    <item>z</item>
+  </group>
+</submission>
