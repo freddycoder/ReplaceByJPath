@@ -14,5 +14,5 @@ jobs:
       shell: powershell
       
     - name: Publier le script sur Powershell Gallery
-      run: Publish-Script -Path .\replaceByJPathFunction.ps1 -NuGetApiKey ${{ secrets.POWERSHELL_GALLERY_API_KEY }}
+      run: Publish-Script -Path .\replaceByJPath.ps1 -NuGetApiKey ${{ secrets.POWERSHELL_GALLERY_API_KEY }}
       shell: powershell

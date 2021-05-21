@@ -24,7 +24,7 @@ Les arguments dans l'ordre sont :
 3. le fichier de sortie ou sera sauvegardé le résultat.
 
 ```
-.\replaceByJPathFunction.ps1 .\exemples\input1.json '{"Tags.Confidence":1.0,"RequestId":"0000-0000-0000"}' .\exemples\output1.json
+.\replaceByJPath.ps1 .\exemples\input1.json '{"Tags.Confidence":1.0,"RequestId":"0000-0000-0000"}' .\exemples\output1.json
 ```
 
 3. (Optionel) Comparer les résultats
@@ -38,7 +38,7 @@ Json avec un tableau à la racine
 1. Préparer et lancer la commande
 
 ```
-.\replaceByJPathFunction.ps1 .\exemples\input2.json '{"donnees.d": "2021"}' .\exemples\output2.json
+.\replaceByJPath.ps1 .\exemples\input2.json '{"donnees.d": "2021"}' .\exemples\output2.json
 ```
 
 2. (optionnel) Comparer les résultats
@@ -50,7 +50,7 @@ Modifier les id d'un tableau a plusieurs dimensions.
 1. Préparer et lancer la commande
 
 ```
-.\replaceByJPathFunction.ps1 .\exemples\input3.json "{'capteurs.donnees.id': '000-000-000' }" .\exemples\output3.json
+.\replaceByJPath.ps1 .\exemples\input3.json "{'capteurs.donnees.id': '000-000-000' }" .\exemples\output3.json
 ```
 
 2. (optionnel) Comparer les résultats
@@ -63,7 +63,7 @@ L'exemple 4 n'utilise pas les namespaces, alors que l'exemple 5 utilise un names
 
 1. Préparer et lancer la commande
 ```
-.\replaceByJPathFunction.ps1 .\exemples\input4.xml "{'/submission/group/@attr1': 'some other text', '/submission/group/item': 'z'}" .\exemples\output4.xml
+.\replaceByJPath.ps1 .\exemples\input4.xml "{'/submission/group/@attr1': 'some other text', '/submission/group/item': 'z'}" .\exemples\output4.xml
 ```
 
 2. (optionnel) Comparer les résultats
@@ -71,7 +71,7 @@ L'exemple 4 n'utilise pas les namespaces, alors que l'exemple 5 utilise un names
 ## Obtenir de l'aide
 
 ```
-Get-Help -detailed .\replaceByJPathFunction.ps1
+Get-Help -detailed .\replaceByJPath.ps1
 ```
 
 ## Ne pas journaliser en console
@@ -80,7 +80,7 @@ Utiliser la fonction Out-Null de powershell
 
 Exemple :
 ```
-.\replaceByJPathFunction.ps1 .\exemples\input1.json '{"Tags.Confidence":1.0,"RequestId":"0000-0000-0000"}' .\exemples\output1.json | Out-Null
+.\replaceByJPath.ps1 .\exemples\input1.json '{"Tags.Confidence":1.0,"RequestId":"0000-0000-0000"}' .\exemples\output1.json | Out-Null
 ```
 
 ## Executer les tests
