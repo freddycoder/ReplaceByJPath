@@ -9,10 +9,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Executer l'analyseur de script powershell
+      run: Invoke-ScriptAnalyzer .\replaceByJPath.ps1 -Recurse
+      shell: powershell
+
     - name: Executer le script des essais
       run: .\tests\replaceByJPathTest.ps1
       shell: powershell
-      
+
     - name: Publier le script sur Powershell Gallery
       run: Publish-Script -Path .\replaceByJPath.ps1 -NuGetApiKey ${{ secrets.POWERSHELL_GALLERY_API_KEY }}
       shell: powershell

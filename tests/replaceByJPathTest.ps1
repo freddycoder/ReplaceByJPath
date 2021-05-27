@@ -1,3 +1,9 @@
+<#
+   Copyright 2021 Frédéric Jacques
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+#>
+
 # Fonction contenant les json de remplacement associé au cas d'essais
 function JsonReplacement([string]$nomCasEssais) {
     switch ($nomCasEssais) {
@@ -6,6 +12,7 @@ function JsonReplacement([string]$nomCasEssais) {
         "input3.json" { return "{'capteurs.donnees.id': '000-000-000' }" }
         "input4.xml"  { return "{'/submission/group/@attr1': 'some other text', '/submission/group/item': 'z'}"}
         "input5.xml"  { return "{'/submission/group/@attr1': 'some other text', '/submission/group/item': 'z'}"}
+        "input_hl7.xml"  { return "{'/PRPA_IN101104CA/id/@root': '0', '/PRPA_IN101104CA/creationTime/@value': '2009', '/PRPA_IN101104CA/controlActEvent/id/@root': '00'}"}
         Default {
             Write-Host "Aucun json de remplacement pour le cas d'essais " $nomCasEssais;
             exit 1;
@@ -34,12 +41,13 @@ foreach ($casEssai in $casEssais) {
     $fichierOutput = $casEssai.Name.Replace("input", "output");
     $jsonRemplacement = JsonReplacement($casEssai.Name);
 
-    & .\replaceByJPath.ps1 -inputFileName .\exemples\$casEssai -replaceJson $jsonRemplacement -outputFileName .\TestResults\$fichierOutput | Out-Null
+    & .\replaceByJPath.ps1 -inputFileName .\exemples\$casEssai -replaceJson $jsonRemplacement -outputFileName .\TestResults\$fichierOutput # | Out-Null
 
     $resultatAttendue = Get-Content .\exemples\$fichierOutput -Encoding utf8;
     $resultatObtenue = Get-Content .\TestResults\$fichierOutput -Encoding utf8;
 
-    if ([System.String]::Equals($resultatAttendue, $resultatObtenue, [System.StringComparison]::Ordinal)) {
+    if ([System.String]::Equals($resultatAttendue, $resultatObtenue, [System.StringComparison]::Ordinal) -and
+         $resultatAttendue.Length -eq $resultatObtenue.Length) {
         Write-Host "[SUCCES]" -ForegroundColor white -BackgroundColor green -NoNewline;
     }
     else {

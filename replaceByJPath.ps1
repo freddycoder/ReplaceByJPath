@@ -1,41 +1,40 @@
-
 <#PSScriptInfo
 
-.VERSION 1.1
+.VERSION 1.2
 
 .GUID 7cdb1a91-ade2-4d26-9942-5005fa790e33
 
 .AUTHOR Frédéric Jacques
 
-.COMPANYNAME 
+.COMPANYNAME
 
-.COPYRIGHT 
+.COPYRIGHT Frédéric Jacques
 
 .TAGS JPath XPath XML JSON Replace
 
-.LICENSEURI 
+.LICENSEURI http://www.apache.org/licenses/LICENSE-2.0
 
 .PROJECTURI https://github.com/freddycoder/ReplaceByJPath
 
-.ICONURI 
+.ICONURI
 
-.EXTERNALMODULEDEPENDENCIES 
+.EXTERNALMODULEDEPENDENCIES
 
-.REQUIREDSCRIPTS 
+.REQUIREDSCRIPTS
 
-.EXTERNALSCRIPTDEPENDENCIES 
+.EXTERNALSCRIPTDEPENDENCIES
 
-.RELEASENOTES Fix usage of relative path with the outputFileName parameter
+.RELEASENOTES Fix space added attributes when there is only one attribute in a node
 
 
 #>
 
-<# 
+<#
 
-.DESCRIPTION 
- A script to replace values in json and xml file given a replacement json object 
+.DESCRIPTION
+ A script to replace values in json and xml file given a replacement json object
 
-#> 
+#>
 
 param(
   [string] $inputFileName="",
@@ -47,6 +46,9 @@ param(
 
 ## Transformer l'objet de replacement
 $replaceObject = $replaceJson | ConvertFrom-Json;
+
+# Variable global a utiliser lors de la sauvegarde
+$Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
 
 # Section de définition des fonctions
 
@@ -117,6 +119,32 @@ function TypeFichier([string] $text) {
   return "inconnu";
 }
 
+# Cette fonction a été tiré de cette page web
+# source : https://docs.microsoft.com/en-us/archive/blogs/sergey_babkins_blog/how-to-pretty-print-xml-in-powershell-and-text-pipelines
+function Format-Xml {
+      param(
+          ## Text of an XML document.
+          [Parameter(ValueFromPipeline = $true)]
+          [string[]]$Text
+      )
+
+      begin {
+          $data = New-Object System.Collections.ArrayList
+      }
+      process {
+          [void] $data.Add($Text -join "`n")
+      }
+      end {
+          $doc=New-Object System.Xml.XmlDataDocument
+          $doc.LoadXml($data -join "`n")
+          $sw=New-Object System.Io.Stringwriter
+          $writer=New-Object System.Xml.XmlTextWriter($sw)
+          $writer.Formatting = [System.Xml.Formatting]::Indented
+          $doc.WriteContentTo($writer)
+          $sw.ToString().Replace('" />', '"/>');
+      }
+  }
+
 # Algoritme de transformation
 
 ## Désérialiser le contenu
@@ -128,13 +156,13 @@ if ($typeFichier -eq "json") {
   $json = $content | ConvertFrom-Json;
 
   ## Remplacement générique depuis l'objet de replacement
-  foreach ($jpath in $replaceObject | Get-Member -MemberType "NoteProperty") 
+  foreach ($jpath in $replaceObject | Get-Member -MemberType "NoteProperty")
   {
       $ref = $json
 
       $pathElements = $jpath.Name.Split('.');
 
-      for ($i = 0; $i -lt $pathElements.Length - 1; $i++) 
+      for ($i = 0; $i -lt $pathElements.Length - 1; $i++)
       {
           $ref = $ref.($pathElements[$i]);
       }
@@ -142,7 +170,7 @@ if ($typeFichier -eq "json") {
       if ($ref -is [system.array]) {
           for ($j = 0; $j -lt $ref.Length; $j++) {
             Write-Output $ref[$j].($pathElements[$pathElements.Length - 1]);
-            
+
             $ref[$j].($pathElements[$pathElements.Length - 1]) = Get-Value($jpath);
 
             Write-Output $ref[$j].($pathElements[$pathElements.Length - 1]);
@@ -167,8 +195,6 @@ if ($typeFichier -eq "json") {
       $outputContent = ConvertTo-Json @($json)[0] -Depth 64 | Format-Json;
   }
 
-  $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
-
   $isRooted = [System.IO.Path]::IsPathRooted($outputFileName);
 
   if ($isRooted -eq $false) {
@@ -179,9 +205,10 @@ if ($typeFichier -eq "json") {
 }
 elseif ($typeFichier -eq "xml") {
   $xmlDoc = [xml]$content.Replace(' xmlns="', ' notxmlns="');
+  $xmlDoc.PreserveWhitespace = $true;
 
   ## Remplacement générique depuis l'objet de replacement
-  foreach ($jpath in $replaceObject | Get-Member -MemberType "NoteProperty") 
+  foreach ($jpath in $replaceObject | Get-Member -MemberType "NoteProperty")
   {
     $nodes = $xmlDoc.SelectNodes($jpath.Name);
 
@@ -208,7 +235,7 @@ elseif ($typeFichier -eq "xml") {
   ## Écrire le contenu dans un fichier
   $xmlString = $xmlDoc.OuterXml;
 
-  $xmlOut = [xml]$xmlString.Replace(' notxmlns="', ' xmlns="');
+  $xmlOut = [xml]($xmlString.Replace(' notxmlns="', ' xmlns="'));
 
   $isRooted = [System.IO.Path]::IsPathRooted($outputFileName);
 
@@ -217,6 +244,10 @@ elseif ($typeFichier -eq "xml") {
   }
 
   $xmlOut.save($outputFileName);
+
+  $xmlWithTrimSpace = (Get-Content $outputFileName -Encoding utf8) | Format-Xml;
+
+  [System.IO.File]::WriteAllText($outputFileName, $xmlWithTrimSpace, $Utf8NoBomEncoding);
 }
 else {
   Write-Error "Contenu non reconnu, le fichier n'est ni un json, ni un xml";
