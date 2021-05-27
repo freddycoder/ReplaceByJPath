@@ -41,7 +41,7 @@ foreach ($casEssai in $casEssais) {
     $fichierOutput = $casEssai.Name.Replace("input", "output");
     $jsonRemplacement = JsonReplacement($casEssai.Name);
 
-    & .\replaceByJPath.ps1 -inputFileName .\exemples\$casEssai -replaceJson $jsonRemplacement -outputFileName .\TestResults\$fichierOutput # | Out-Null
+    & .\replaceByJPath.ps1 -inputFileName .\exemples\$casEssai -replaceJson $jsonRemplacement -outputFileName .\TestResults\$fichierOutput | Out-Null
 
     $resultatAttendue = Get-Content .\exemples\$fichierOutput -Encoding utf8;
     $resultatObtenue = Get-Content .\TestResults\$fichierOutput -Encoding utf8;
